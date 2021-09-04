@@ -222,4 +222,14 @@ inner class를 써줌으로서 외부클래스 멤버변수에 접근 가능해�
 	제한
 		SDK17이전에는 60분 동안 가져오기 요청수 5회 제한
 
-### 03.Remote Config 연동   
+### 03.Remote Config 구성   
+	->안드로이드 앱에 Firebase추가(패키지명은 build.gradle앱단위 에서 applicationId, 닉네임은 자유)
+	->Json파일 다운로드 후 프로젝트로 바꾸고 app디렉토리에 추가
+	-> 앱에서 firebase제품을 사용할 수 있도록 gradle에 서비스plugin추가
+	(project단위) classpath "com.google.gms:google-services:4.3.5"
+	(앱단위module) id 'com.google.gms.google-services'
+
+	implementation platform('com.google.firebase:firebase-bom:26.5.0')	
+	implementation 'com.google.firebase:firebase-config-ktx'
+	implementation 'com.google.firebase:firebase-analytics-ktx'
+
