@@ -28,6 +28,7 @@
 		->inflater사용(LayoutInflater.from(지금 액티비티)) 현재 액티비티에서 가져옴(그려주는 곳)
 		->inflater.inflate(아이템뷰XML layout, null, )
 		-> Container View에 더해준다 -> 반복한다.
+		
 			val container = 컨테이너 레이아웃
 			val inflater = LayoutInflater.from(지금 액티비티) //그리는곳
 
@@ -50,7 +51,9 @@ addView를 하면 스크롤이 자동장착 안 됨 -> 스크롤뷰로 감싸줌
 	}
 	->만든 어답터 클래스 넣어주기
 	->리스트 뷰에 리스너 장착
+	
 oncreate...
+
 	val adapter = ListViewAdapter(carList, LayoutInflater.from(this@지금 액티비티))
 	listView.adapter = adapter	//만든 어답터 클래스 넣어주기
 	listView.setOnItemClickLister(){->	 //리스트 뷰에 리스너 장착
@@ -88,6 +91,7 @@ AddView와 ListView의 차이점
 
 리스트 뷰 사용시 [뷰 홀더]를 사용하여 무겁고 리소스를 많이 사용하는 findViewById()개선
 	-> 뷰홀더 클래스 만들기 
+	
 	class ViewHolder{ //뷰홀더
 		var carName: TextView? = null
 		var carEngine : TextView? = null
@@ -128,6 +132,7 @@ AddView와 ListView의 차이점
 ->build.gradle 앱단위에서 '리사이클러뷰' 추가
 ->레이아웃 XML에 리사이클러뷰 태그 추가 <~rycyclerview.~>
 ->어답터 생성(class RecyclerViewAdapter)
+
 	class RecyclerViewAdapter(
 		val itemList : ArrayList<carForList>,	//아이템리스트 인자로 받음
 		val inflater : LayoutInflater	//인플레이터를 인자로 받음
@@ -155,11 +160,13 @@ AddView와 ListView의 차이점
 		}
 
 ->oncreate에서
+
 	val adapter = RecyclerViewAdapter(carList, LayoutInflater.from(this@지금액티비티))
 	recycler_view.adapter = adapter //xml에 있는 리사이클러뷰에 어답터 추가
 	recycler_view.layoutManager = LinearLayoutManager(this@지금액티비티) //레이아웃매니저 사용 //GridLayoutManager()도 사용가능 //
 
 ->뷰홀더에 클릭리스너 달아주기 좋음 . 위의 뷰홀더의init블럭
+
 			init{ 
 				carName = itemView.findViewById(R.id.car_name)
 				carEngine = itemview.findViewById(R.id.car_Engine)
@@ -180,5 +187,9 @@ inner class를 써줌으로서 외부클래스 멤버변수에 접근 가능해�
 			->활용할 데이터 추가해줌( 어댑터 클래스 인자추가)   
 	->mainActivity에 있는 ViewPager와 연동 -> 뷰페이저어댑터를 설정   
 ### 02.Remote Config 구성   
+	https://firebase.google.com/docs/remote-config
+	앱 업데이트를 게시하지 않아도 하루 활성 사용자 수 제한 없이 무료로 앱의 동작과 모양을 변경할 수 있습니다.
+	![param-precedence](https://user-images.githubusercontent.com/68258365/132102736-0fb8dd94-d3d5-4f4e-88cd-b9bead82afa0.png)
+	
 
 ### 03.Remote Config 연동   
